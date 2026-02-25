@@ -355,7 +355,11 @@ function verificarClave(){
     const claveCorrecta = "TEC1234"; // cambiás esto por cada cliente
     const claveIngresada = document.getElementById("claveInput").value;
 
-    document.getElementById("mensajeError").style.display = "none";
+    document.getElementById("mensajeError").style.opacity = "1";
+
+setTimeout(()=>{
+    document.getElementById("mensajeError").style.opacity = "0";
+},1500);
 
     if(claveIngresada === claveCorrecta){
 
@@ -395,6 +399,7 @@ setTimeout(()=>{
 </body>
 
 </html>
+
 
 
 
