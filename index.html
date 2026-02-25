@@ -287,19 +287,26 @@ document.getElementById("logoInput").addEventListener("change", function(e){
 agregarItem();
 
 function verificarClave(){
-    const claveCorrecta = "ap1992ap"; // Cambiá esta clave por la que quieras
+    const claveCorrecta = "TEC1234"; // cambiás esta por cada cliente
     const claveIngresada = document.getElementById("claveInput").value;
 
     if(claveIngresada === claveCorrecta){
+        localStorage.setItem("accesoPermitido", "si");
         document.getElementById("bloqueo").style.display = "none";
     } else {
         alert("Código incorrecto");
     }
+}
+
+// Verifica si ya ingresó antes
+if(localStorage.getItem("accesoPermitido") === "si"){
+    document.getElementById("bloqueo").style.display = "none";
 }</script>
 
 </body>
 
 </html>
+
 
 
 
