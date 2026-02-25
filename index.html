@@ -107,14 +107,55 @@ table th, table td{
 </head>
 
 <body>
-   <body>
+<div id="bloqueo" style="<div id="bloqueo" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+text-align:center;
+padding:20px;
+transition: opacity 0.5s ease;
+">
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+text-align:center;
+padding:20px;
+">
 
-<div id="bloqueo" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
-    <h2>🔒 Acceso exclusivo</h2>
-    <p>Ingresá tu código de acceso para usar el sistema</p>
-    <input type="password" id="claveInput" placeholder="Código de acceso" style="padding:10px;margin:10px;">
-    <button onclick="verificarClave()" style="padding:10px 20px;">Ingresar</button>
-</div> 
+<h1 style="margin-bottom:10px;">🔒 Sistema PRO 2026</h1>
+
+<p style="max-width:400px;margin-bottom:20px;">
+Esta herramienta es de acceso exclusivo para clientes que adquirieron la licencia.
+Ingresá tu código para continuar.
+</p>
+
+<input type="password" id="claveInput" placeholder="Código de acceso"
+style="padding:12px;width:250px;border-radius:6px;border:none;margin-bottom:15px;font-size:16px;">
+
+<button onclick="verificarClave()"
+style="padding:12px 30px;font-size:16px;background:#16a34a;border:none;border-radius:6px;color:white;cursor:pointer;">
+Ingresar
+</button>
+
+</div>
     
 <img src="portada.jpg" width="100%"> 
 
@@ -306,6 +347,7 @@ if(localStorage.getItem("accesoPermitido") === "si"){
 </body>
 
 </html>
+
 
 
 
