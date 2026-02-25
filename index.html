@@ -394,11 +394,17 @@ if(localStorage.getItem("accesoPermitido") === "si"){
 setTimeout(()=>{
     document.getElementById("bloqueo").style.display = "none";
 },500);
-}</script>
+}document.getElementById("claveInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        verificarClave();
+    }
+});
+</script>
 
 </body>
 
 </html>
+
 
 
 
