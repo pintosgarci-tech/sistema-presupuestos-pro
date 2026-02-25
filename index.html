@@ -341,12 +341,16 @@ function verificarClave(){
 
 // Verifica si ya ingresó antes
 if(localStorage.getItem("accesoPermitido") === "si"){
+    document.getElementById("bloqueo").style.opacity = "0";
+setTimeout(()=>{
     document.getElementById("bloqueo").style.display = "none";
+},500);
 }</script>
 
 </body>
 
 </html>
+
 
 
 
