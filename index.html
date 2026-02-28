@@ -3,418 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistema PRO de Presupuestos para Técnicos 2026</title>
+<title>Sistema Presupuestos Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-    --azul:#0f172a;
-    --azul-claro:#1e293b;
-    --blanco:#ffffff;
-    --gris:#f1f5f9;
-}
-
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:var(--gris);
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    overflow-x:hidden;
 }
 
 header{
-    background:var(--azul);
-    color:white;
-    padding:20px;
     text-align:center;
+    padding:100px 20px;
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-}
-
-.section{
-    background:white;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:8px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+h1{
+    font-size:48px;
+    animation:fadeInDown 1.5s ease;
 }
 
 h2{
-    margin-top:0;
-    color:var(--azul);
-}
-
-input, textarea{
-    width:100%;
-    padding:8px;
-    margin:5px 0 10px 0;
-    border:1px solid #ccc;
-    border-radius:4px;
+    font-weight:300;
+    margin-top:10px;
+    opacity:0.9;
+    animation:fadeInUp 2s ease;
 }
 
 button{
-    background:var(--azul);
-    color:white;
+    padding:15px 35px;
     border:none;
-    padding:10px 15px;
-    border-radius:5px;
+    border-radius:30px;
+    background:#6366f1;
+    color:white;
+    font-size:16px;
     cursor:pointer;
-    margin:5px 0;
+    margin-top:25px;
+    transition:0.3s;
 }
 
 button:hover{
-    background:var(--azul-claro);
+    background:#4f46e5;
+    transform:scale(1.05);
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-table th, table td{
-    border:1px solid #ddd;
-    padding:8px;
+.section{
+    padding:60px 20px;
     text-align:center;
 }
 
-.total-box{
-    text-align:right;
-    margin-top:10px;
-    font-weight:bold;
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    max-width:350px;
+    margin:auto;
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
 }
 
-.logo-preview{
-    max-height:80px;
-    margin-bottom:10px;
+footer{
+    text-align:center;
+    padding:30px;
+    opacity:0.7;
 }
 
-@media print{
-    button, #historialModal{
-        display:none;
-    }
-    body{
-        background:white;
-    }
+/* Animaciones */
+
+@keyframes fadeInDown{
+    from{opacity:0;transform:translateY(-40px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
-@media(max-width:768px){
-    table{
-        font-size:12px;
-    }
+@keyframes fadeInUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
 }
 </style>
 </head>
-
 <body>
-<div id="bloqueo" style="<div id="bloqueo" style="
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#0f172a,#1e293b);
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-text-align:center;
-padding:20px;
-transition: opacity 0.5s ease;
-">
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#0f172a,#1e293b);
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-text-align:center;
-padding:20px;
-">
-    <p id="mensajeAcceso" style="margin-top:15px;font-weight:bold;display:none;color:#22c55e;">
-Acceso concedido ✔
-</p>
 
-<h1 style="margin-bottom:10px;">🔒 Sistema PRO 2026</h1>
-
-<p style="max-width:400px;margin-bottom:20px;">
-Esta herramienta es de acceso exclusivo para clientes que adquirieron la licencia.
-Ingresá tu código para continuar.
-</p>
-
-<input type="password" id="claveInput" placeholder="Código de acceso"
-style="padding:12px;width:250px;border-radius:6px;border:none;margin-bottom:15px;font-size:16px;">
-
-<button onclick="verificarClave()"
-style="padding:12px 30px;font-size:16px;background:#16a34a;border:none;border-radius:6px;color:white;cursor:pointer;">
-Ingresar
-</button>
-    <button onclick="verificarClave()"
-style="padding:12px 30px;font-size:16px;background:#16a34a;border:none;border-radius:6px;color:white;cursor:pointer;">
-Ingresar
-</button>
-
-<p id="mensajeAcceso" style="margin-top:15px;font-weight:bold;display:none;color:#22c55e;">
-Acceso concedido ✔
-
-
-   <p id="mensajeError" style="
-margin-top:10px;
-font-weight:bold;
-color:#ef4444;
-opacity:0;
-transition: opacity 0.3s ease;
-">
-Código incorrecto ❌
-</p> 
-
-</div>
-    
-<img src="portada.jpg" width="100%"> 
-
-    <div style="background:white;padding:20px;text-align:center;">
-    <h2>La herramienta definitiva para técnicos que quieren trabajar más rápido y ganar más dinero</h2>
-    <p>Creá presupuestos profesionales en segundos, calculá ganancias automáticamente y descargá en PDF listo para enviar a tus clientes.</p>
-</div>
 <header>
-    <div style="text-align:center;margin:30px 0;">
-    <a href="PEGÁ_AQUÍ_TU_LINK" target="_blank">
-        <button style="font-size:20px;padding:15px 35px;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">
-            💳 Comprar ahora
-        </button>
-    </a>
-</div>
-<h1>Sistema PRO de Presupuestos para Técnicos 2026</h1>
+    <h1>Sistema Presupuestos Pro</h1>
+    <h2>Creá presupuestos profesionales en segundos</h2>
+
+    <button onclick="activarPrueba()">Probar Gratis 24 hs</button>
 </header>
 
-<div class="container">
+<section class="section">
+    <div class="card">
+        <h3>Versión Premium</h3>
+        <p>✔ Presupuestos ilimitados</p>
+        <p>✔ Exportación profesional</p>
+        <p>✔ Uso de por vida</p>
+        <h2>USD 29</h2>
 
-<div class="section">
-<h2>Datos del Negocio</h2>
-<img id="logoPreview" class="logo-preview"/>
-<input type="file" id="logoInput">
-<input type="text" id="empresa" placeholder="Nombre del técnico o empresa">
-<input type="text" id="telefonoEmpresa" placeholder="Teléfono">
-<input type="email" id="emailEmpresa" placeholder="Email">
-</div>
+        <!-- PONER TU LINK ACA -->
+        <a href="https://mpago.la/TU_LINK_AQUI" target="_blank">
+            <button>Comprar Ahora</button>
+        </a>
+    </div>
+</section>
 
-<div class="section">
-<h2>Datos del Cliente</h2>
-<input type="text" id="cliente" placeholder="Nombre del cliente">
-<input type="text" id="telefonoCliente" placeholder="Teléfono">
-<input type="text" id="direccionCliente" placeholder="Dirección">
-<input type="text" id="fecha" readonly>
-<input type="text" id="numeroPresupuesto" readonly>
-</div>
-
-<div class="section">
-<h2>Ítems del Presupuesto</h2>
-<table>
-<thead>
-<tr>
-<th>Descripción</th>
-<th>Cantidad</th>
-<th>Precio Unitario</th>
-<th>Total</th>
-<th></th>
-</tr>
-</thead>
-<tbody id="itemsBody"></tbody>
-</table>
-<button onclick="agregarItem()">Agregar ítem</button>
-
-<div class="total-box">
-<p>Subtotal: $ <span id="subtotal">0</span></p>
-<p>Ganancia (%): <input type="number" id="porcentajeGanancia" value="10" style="width:60px" onchange="calcularTotales()"> </p>
-<p>Ganancia: $ <span id="ganancia">0</span></p>
-<p>Total Final: $ <span id="totalFinal">0</span></p>
-</div>
-</div>
-
-<div class="section">
-<button onclick="guardarPresupuesto()">Guardar Presupuesto</button>
-<button onclick="verHistorial()">Ver Historial</button>
-<button onclick="eliminarHistorial()">Eliminar Historial</button>
-<button onclick="window.print()">Descargar PDF</button>
-</div>
-
-</div>
+<footer>
+    © 2026 Sistema Presupuestos Pro - Todos los derechos reservados
+</footer>
 
 <script>
+// PRUEBA GRATIS 24 HORAS
 
-// Fecha automática
-document.getElementById("fecha").value = new Date().toLocaleDateString();
-
-// Número incremental
-let numero = localStorage.getItem("numeroPresupuesto") || 1;
-document.getElementById("numeroPresupuesto").value = "Presupuesto #" + numero;
-
-function agregarItem(){
-    const tbody = document.getElementById("itemsBody");
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-        <td><input type="text" onchange="calcularTotales()"></td>
-        <td><input type="number" value="1" onchange="calcularTotales()"></td>
-        <td><input type="number" value="0" onchange="calcularTotales()"></td>
-        <td class="itemTotal">0</td>
-        <td><button onclick="this.parentElement.parentElement.remove();calcularTotales()">X</button></td>
-    `;
-
-    tbody.appendChild(row);
-}
-
-function calcularTotales(){
-    let subtotal = 0;
-    const rows = document.querySelectorAll("#itemsBody tr");
-
-    rows.forEach(row=>{
-        const cantidad = row.cells[1].children[0].value;
-        const precio = row.cells[2].children[0].value;
-        const total = cantidad * precio;
-        row.querySelector(".itemTotal").innerText = total.toFixed(2);
-        subtotal += total;
-    });
-
-    document.getElementById("subtotal").innerText = subtotal.toFixed(2);
-
-    const porcentaje = document.getElementById("porcentajeGanancia").value;
-    const ganancia = subtotal * (porcentaje/100);
-    const totalFinal = subtotal + ganancia;
-
-    document.getElementById("ganancia").innerText = ganancia.toFixed(2);
-    document.getElementById("totalFinal").innerText = totalFinal.toFixed(2);
-}
-
-function guardarPresupuesto(){
-
-    if(!document.getElementById("cliente").value){
-        alert("Debe completar el nombre del cliente");
-        return;
-    }
-
-    const presupuesto = {
-        empresa: document.getElementById("empresa").value,
-        cliente: document.getElementById("cliente").value,
-        total: document.getElementById("totalFinal").innerText,
-        fecha: document.getElementById("fecha").value
-    };
-
-    let historial = JSON.parse(localStorage.getItem("historial")) || [];
-    historial.push(presupuesto);
-    localStorage.setItem("historial", JSON.stringify(historial));
-
-    numero++;
-    localStorage.setItem("numeroPresupuesto", numero);
-
-    alert("Presupuesto guardado correctamente");
-}
-
-function verHistorial(){
-    let historial = JSON.parse(localStorage.getItem("historial")) || [];
-    let mensaje = "Historial de Presupuestos:\n\n";
-
-    historial.forEach((p,i)=>{
-        mensaje += `${i+1}. ${p.cliente} - $${p.total} - ${p.fecha}\n`;
-    });
-
-    alert(mensaje || "No hay presupuestos guardados.");
-}
-
-function eliminarHistorial(){
-    if(confirm("¿Seguro que desea eliminar todo el historial?")){
-        localStorage.removeItem("historial");
-        alert("Historial eliminado.");
+function activarPrueba(){
+    if(!localStorage.getItem("inicioPrueba")){
+        localStorage.setItem("inicioPrueba", Date.now());
+        alert("Prueba activada por 24 horas");
+        window.location.href = "app.html";
+    }else{
+        verificarTiempo();
     }
 }
 
-// Logo preview
-document.getElementById("logoInput").addEventListener("change", function(e){
-    const reader = new FileReader();
-    reader.onload = function(){
-        document.getElementById("logoPreview").src = reader.result;
-    }
-    reader.readAsDataURL(e.target.files[0]);
-});
+function verificarTiempo(){
+    let inicio = localStorage.getItem("inicioPrueba");
+    let ahora = Date.now();
+    let horas = (ahora - inicio) / (1000 * 60 * 60);
 
-// Agregar primer ítem automático
-agregarItem();
-
-function verificarClave()
-    
-function verificarClave(){
-
-    const claveCorrecta = "TEC1234"; // cambiás esto por cada cliente
-    const claveIngresada = document.getElementById("claveInput").value;
-
-    document.getElementById("mensajeError").style.opacity = "1";
-
-setTimeout(()=>{
-    document.getElementById("mensajeError").style.opacity = "0";
-},1500);
-
-    if(claveIngresada === claveCorrecta){
-
-        localStorage.setItem("accesoPermitido", "si");
-
-        document.getElementById("mensajeAcceso").style.display = "block";
-
-        setTimeout(()=>{
-            document.getElementById("bloqueo").style.opacity = "0";
-            setTimeout(()=>{
-                document.getElementById("bloqueo").style.display = "none";
-            },500);
-        },1000);
-
-    } else {
-
-        document.getElementById("mensajeError").style.display = "block";
-
+    if(horas <= 24){
+        window.location.href = "app.html";
+    }else{
+        alert("Tu prueba gratuita expiró. Adquirí la versión premium.");
     }
 }
-    if(claveIngresada === claveCorrecta){
-        localStorage.setItem("accesoPermitido", "si");
-        document.getElementById("bloqueo").style.display = "none";
-    } else {
-        alert("Código incorrecto");
-    }
-}
-
-// Verifica si ya ingresó antes
-if(localStorage.getItem("accesoPermitido") === "si"){
-    document.getElementById("bloqueo").style.opacity = "0";
-setTimeout(()=>{
-    document.getElementById("bloqueo").style.display = "none";
-},500);
-}document.getElementById("claveInput").addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        verificarClave();
-    }
-});
 </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
