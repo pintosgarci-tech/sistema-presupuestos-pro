@@ -67,20 +67,25 @@ border-bottom:1px solid #333;
 text-align:left;
 }
 
-/* Barra superior profesional */
+/* Barra superior */
 .topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:#1c1c1c;
-padding:15px 20px;
-border-radius:10px;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
+/* Título grande protagonista */
 .logo{
-font-size:20px;
+font-size:32px;
 font-weight:bold;
+}
+
+/* Botón cerrar sesión más pequeño */
+.btn-danger{
+width:auto;
+padding:8px 15px;
+font-size:14px;
 }
 </style>
 </head>
@@ -91,7 +96,7 @@ font-weight:bold;
 
 <!-- LOGIN -->
 <div id="loginScreen">
-<h1>⚡ VoltsPro</h1>
+<h1 style="font-size:40px;">⚡ VoltsPro</h1>
 <h2>Login Profesional</h2>
 <input type="text" id="usuario" placeholder="Usuario">
 <input type="password" id="password" placeholder="Contraseña">
@@ -107,7 +112,7 @@ font-weight:bold;
   <button class="btn-danger" onclick="logout()">Cerrar Sesión</button>
 </div>
 
-<h1>Panel Profesional</h1>
+<h2 style="margin-bottom:20px;">Panel Profesional</h2>
 
 <div class="card">
 <h2>Crear Presupuesto</h2>
