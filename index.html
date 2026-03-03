@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,11 +68,8 @@ border-bottom:1px solid #333;
 text-align:left;
 }
 
-.logout{
-position:absolute;
-right:20px;
-top:20px;
-} .topbar{
+/* Barra superior profesional */
+.topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -84,27 +82,6 @@ margin-bottom:30px;
 .logo{
 font-size:20px;
 font-weight:bold;
-}
-
-h1{
-margin-top:20px;
-}.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#1c1c1c;
-padding:15px 20px;
-border-radius:10px;
-margin-bottom:30px;
-}
-
-.logo{
-font-size:20px;
-font-weight:bold;
-}
-
-h1{
-margin-top:20px;
 }
 </style>
 </head>
@@ -115,7 +92,7 @@ margin-top:20px;
 
 <!-- LOGIN -->
 <div id="loginScreen">
-<h1>VoltsPro</h1>
+<h1>⚡ VoltsPro</h1>
 <h2>Login Profesional</h2>
 <input type="text" id="usuario" placeholder="Usuario">
 <input type="password" id="password" placeholder="Contraseña">
@@ -132,36 +109,6 @@ margin-top:20px;
 </div>
 
 <h1>Panel Profesional</h1>
-
-<div class="card">
-<h2>Crear Presupuesto</h2>
-<input type="text" id="cliente" placeholder="Nombre del Cliente">
-<input type="text" id="descripcion" placeholder="Descripción del Trabajo">
-<input type="number" id="monto" placeholder="Monto en pesos">
-<button class="btn-success" onclick="guardar()">Guardar Presupuesto</button>
-</div>
-
-<div class="card">
-<h2>Historial</h2>
-<table>
-<thead>
-<tr>
-<th>Fecha</th>
-<th>Cliente</th>
-<th>Trabajo</th>
-<th>Monto</th>
-<th>Acciones</th>
-</tr>
-</thead>
-<tbody id="tabla"></tbody>
-</table>
-</div>
-
-</div>
-
-<button class="btn-danger logout" onclick="logout()">Cerrar Sesión</button>
-
-<h1>Panel VoltsPro</h1>
 
 <div class="card">
 <h2>Crear Presupuesto</h2>
@@ -235,16 +182,16 @@ return;
 
 let fecha=new Date().toLocaleDateString();
 
-let presupuesto={
-fecha,cliente,descripcion,monto
-};
+let presupuesto={fecha,cliente,descripcion,monto};
 
 let datos=JSON.parse(localStorage.getItem("presupuestos"))||[];
 datos.push(presupuesto);
 localStorage.setItem("presupuestos",JSON.stringify(datos));
 
 cargar();
-limpiar();
+document.getElementById("cliente").value="";
+document.getElementById("descripcion").value="";
+document.getElementById("monto").value="";
 }
 
 function cargar(){
@@ -308,7 +255,6 @@ ventana.print();
 
 </body>
 </html>
-
 
 
 
