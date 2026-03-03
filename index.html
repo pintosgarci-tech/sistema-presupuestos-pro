@@ -92,6 +92,39 @@ top:20px;
 <!-- PANEL -->
 <div id="panel" class="hidden">
 
+<div class="topbar">
+  <div class="logo">⚡ VoltsPro</div>
+  <button class="btn-danger" onclick="logout()">Cerrar Sesión</button>
+</div>
+
+<h1>Panel Profesional</h1>
+
+<div class="card">
+<h2>Crear Presupuesto</h2>
+<input type="text" id="cliente" placeholder="Nombre del Cliente">
+<input type="text" id="descripcion" placeholder="Descripción del Trabajo">
+<input type="number" id="monto" placeholder="Monto en pesos">
+<button class="btn-success" onclick="guardar()">Guardar Presupuesto</button>
+</div>
+
+<div class="card">
+<h2>Historial</h2>
+<table>
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Cliente</th>
+<th>Trabajo</th>
+<th>Monto</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody id="tabla"></tbody>
+</table>
+</div>
+
+</div>
+
 <button class="btn-danger logout" onclick="logout()">Cerrar Sesión</button>
 
 <h1>Panel VoltsPro</h1>
@@ -241,5 +274,6 @@ ventana.print();
 
 </body>
 </html>
+
 
 
