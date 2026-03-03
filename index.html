@@ -3,248 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VoltsPro Elite</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>VoltsPro</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-
-body{
-background:#000;
-color:white;
-overflow-x:hidden;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d0d0d;
 }
 
-/* Fondo animado premium */
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:
-radial-gradient(circle at 20% 30%, #2563eb 0%, transparent 40%),
-radial-gradient(circle at 80% 70%, #06b6d4 0%, transparent 40%);
-animation:moveBg 20s linear infinite;
-z-index:-1;
+/* HERO FULL PANTALLA */
+.hero {
+  height: 100vh;
+  background: url("portada.png.png") center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
 }
 
-@keyframes moveBg{
-0%{transform:translate(0,0);}
-50%{transform:translate(-8%,-8%);}
-100%{transform:translate(0,0);}
+/* Oscurece un poco para que el texto se lea mejor */
+.overlay {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  border-radius: 12px;
 }
 
-section{
-display:none;
-padding:40px;
-min-height:100vh;
+h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
 }
 
-.active{
-display:block;
+p {
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 
-/* LANDING */
-.hero{
-text-align:center;
-margin-top:120px;
+button {
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.hero h1{
-font-size:55px;
-margin-bottom:20px;
+.btn-demo {
+  background-color: #f7b500;
+  color: black;
 }
 
-.hero p{
-max-width:700px;
-margin:auto;
-color:#d1d5db;
-margin-bottom:40px;
+.btn-demo:hover {
+  background-color: #ffd447;
 }
 
-button{
-padding:15px 35px;
-border-radius:50px;
-border:none;
-font-size:16px;
-cursor:pointer;
-margin:10px;
-font-weight:600;
-transition:0.3s;
+.btn-comprar {
+  background-color: #00c853;
+  color: white;
 }
 
-.primary{background:white;color:black;}
-.secondary{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);}
-
-button:hover{transform:scale(1.08);}
-
-img{
-width:90%;
-max-width:900px;
-border-radius:25px;
-margin-top:40px;
+.btn-comprar:hover {
+  background-color: #00e676;
 }
 
-/* LOGIN */
-.login-box{
-max-width:350px;
-margin:150px auto;
-background:#111;
-padding:40px;
-border-radius:20px;
-text-align:center;
-}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:none;
-}
-
-/* APP */
-.app-container{
-max-width:900px;
-margin:auto;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:15px;
-margin:20px 0;
-}
-
-.logout{
-position:absolute;
-top:20px;
-right:20px;
-padding:10px 20px;
-border-radius:20px;
-background:white;
-color:black;
-cursor:pointer;
+  p {
+    font-size: 16px;
+  }
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<!-- LANDING -->
-<section id="landing" class="active">
-<div class="hero">
-<h1>VoltsPro Elite</h1>
-<p>Plataforma profesional de presupuestos y gestión creada exclusivamente para electricistas uruguayos.</p>
-<button class="primary" onclick="showLogin()">Ingresar al Sistema</button>
-<button class="secondary">Comprar Licencia</button>
-<img src="portada.png" alt="VoltsPro Elite">
-</div>
+<section class="hero">
+  <div class="overlay">
+    <h1>VoltsPro</h1>
+    <p>La herramienta profesional para electricistas</p>
+    <button class="btn-demo">Probar Demo</button>
+    <button class="btn-comprar">Comprar Ahora</button>
+  </div>
 </section>
-
-<!-- LOGIN -->
-<section id="login">
-<div class="login-box">
-<h2>Acceso Clientes</h2>
-<input type="text" id="user" placeholder="Usuario">
-<input type="password" id="pass" placeholder="Contraseña">
-<button class="primary" onclick="login()">Ingresar</button>
-</div>
-</section>
-
-<!-- APP -->
-<section id="app">
-<div class="logout" onclick="logout()">Cerrar sesión</div>
-<div class="app-container">
-<h1>Panel VoltsPro Elite</h1>
-
-<div class="card">
-<h3>Crear Presupuesto</h3>
-<input type="text" id="cliente" placeholder="Nombre del Cliente">
-<input type="text" id="trabajo" placeholder="Descripción del Trabajo">
-<input type="number" id="monto" placeholder="Monto">
-<button class="primary" onclick="guardar()">Guardar Presupuesto</button>
-</div>
-
-<div class="card">
-<h3>Historial</h3>
-<div id="historial"></div>
-</div>
-
-</div>
-</section>
-
-<script>
-
-// Usuarios simulados (podés cambiarlos)
-const usuarios = [
-{user:"admin", pass:"1234"},
-{user:"cliente1", pass:"volts2026"}
-];
-
-// Mostrar login
-function showLogin(){
-document.getElementById("landing").classList.remove("active");
-document.getElementById("login").classList.add("active");
-}
-
-// Login
-function login(){
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
-
-let valido=usuarios.find(x=>x.user===u && x.pass===p);
-
-if(valido){
-localStorage.setItem("logueado","true");
-document.getElementById("login").classList.remove("active");
-document.getElementById("app").classList.add("active");
-cargar();
-}else{
-alert("Datos incorrectos");
-}
-}
-
-// Logout
-function logout(){
-localStorage.removeItem("logueado");
-location.reload();
-}
-
-// Guardar presupuesto
-function guardar(){
-let cliente=document.getElementById("cliente").value;
-let trabajo=document.getElementById("trabajo").value;
-let monto=document.getElementById("monto").value;
-
-let presupuestos=JSON.parse(localStorage.getItem("presupuestos"))||[];
-
-presupuestos.push({cliente,trabajo,monto});
-
-localStorage.setItem("presupuestos",JSON.stringify(presupuestos));
-
-cargar();
-}
-
-// Cargar historial
-function cargar(){
-let presupuestos=JSON.parse(localStorage.getItem("presupuestos"))||[];
-let historial=document.getElementById("historial");
-historial.innerHTML="";
-
-presupuestos.forEach(p=>{
-historial.innerHTML+=`<p>${p.cliente} - ${p.trabajo} - $${p.monto}</p>`;
-});
-}
-
-// Si ya está logueado
-if(localStorage.getItem("logueado")==="true"){
-document.getElementById("landing").classList.remove("active");
-document.getElementById("app").classList.add("active");
-cargar();
-}
-
-</script>
 
 </body>
 </html>
+
